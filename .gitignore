@@ -1,0 +1,22 @@
+# Node modules
+node_modules/
+**/node_modules/
+
+# Environment variables
+.env
+**/ .env
+.env.local
+.env.*.local
+
+# Build output / Vite
+dist/
+**/dist/
+build/
+**/build/
+
+# Logs & OS files
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+.DS_Store
+Thumbs.db
