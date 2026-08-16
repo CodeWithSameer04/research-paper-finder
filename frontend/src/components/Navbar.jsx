@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { BookOpen, Bookmark, Sun, Moon, Info } from 'lucide-react';
+import { Bookmark, Sun, Moon, Info } from 'lucide-react';
+// Import your logo image from assets
+import logoImage from '../assets/logo.png';
 
 export function Navbar({ theme, toggleTheme, bookmarkCount }) {
   const location = useLocation();
@@ -15,10 +17,10 @@ export function Navbar({ theme, toggleTheme, bookmarkCount }) {
   return (
     <header className="sticky top-0 z-40 w-full border-b border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 backdrop-blur">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 text-slate-900 dark:text-white font-bold text-lg">
-          <div className="p-2 bg-brand-600 rounded-lg text-white">
-            <BookOpen className="w-5 h-5" />
-          </div>
+        
+        {/* Brand Logo & Name */}
+        <Link to="/" className="flex items-center gap-2.5 text-slate-900 dark:text-white font-bold text-lg">
+          <img src={logoImage} alt="ResearchFinder Logo" className="w-8 h-8 object-contain rounded-lg" />
           <span>ResearchFinder</span>
         </Link>
 
