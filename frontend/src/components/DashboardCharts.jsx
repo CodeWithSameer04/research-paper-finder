@@ -39,9 +39,9 @@ export function DashboardCharts({ papers, totalCount }) {
   ];
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
       {/* Metric Card */}
-      <div className="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-col justify-between">
+      <div className="bg-white dark:bg-slate-900 p-4 md:p-6 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-col justify-between">
         <div>
           <h4 className="text-xs uppercase tracking-wider font-bold text-slate-400 dark:text-slate-500">
             Current Query Scope
@@ -71,7 +71,7 @@ export function DashboardCharts({ papers, totalCount }) {
         <h4 className="text-xs uppercase tracking-wider font-bold text-slate-400 dark:text-slate-500 mb-4">
           Publication Year Spread
         </h4>
-        <div className="h-44 w-full">
+        <div className="h-36 sm:h-44 w-full">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={yearData}>
               <XAxis dataKey="year" fontSize={11} tickLine={false} axisLine={false} stroke="#94a3b8" />
@@ -96,7 +96,7 @@ export function DashboardCharts({ papers, totalCount }) {
         <h4 className="text-xs uppercase tracking-wider font-bold text-slate-400 dark:text-slate-500 mb-4">
           Access Availability
         </h4>
-        <div className="h-44 w-full flex items-center justify-center">
+        <div className="h-36 sm:h-44 w-full flex items-center justify-center">
           <ResponsiveContainer width="100%" height="100%">
             <PieChart>
               <Pie

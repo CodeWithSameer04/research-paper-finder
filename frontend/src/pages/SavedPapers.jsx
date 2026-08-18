@@ -9,7 +9,7 @@ export function SavedPapers({ bookmarks, onToggleBookmark, isBookmarked }) {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10">
-      <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-6 mb-8">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-6 mb-8 gap-4 sm:gap-0">
         <div>
           <h1 className="text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
             <Bookmark className="w-6 h-6 text-brand-600 dark:text-brand-400" />

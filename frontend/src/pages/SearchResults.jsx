@@ -75,8 +75,8 @@ export function SearchResults({ bookmarks, onToggleBookmark, isBookmarked }) {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
       {/* Search Header Bar */}
-      <form onSubmit={handleSearchSubmit} className="flex gap-2 max-w-3xl mb-8">
-        <div className="relative flex-1">
+      <form onSubmit={handleSearchSubmit} className="flex flex-col sm:flex-row gap-2 max-w-3xl mb-8 items-stretch">
+        <div className="relative flex-1 w-full">
           <Search className="absolute left-4 top-3.5 w-5 h-5 text-slate-400" />
           <input
             type="text"
@@ -86,17 +86,17 @@ export function SearchResults({ bookmarks, onToggleBookmark, isBookmarked }) {
             className="w-full pl-11 pr-4 py-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-slate-900 dark:text-white outline-none focus:border-brand-500"
           />
         </div>
-        <button
-          type="submit"
-          className="px-6 py-3 bg-brand-600 hover:bg-brand-700 text-white rounded-xl font-semibold text-sm transition"
-        >
-          Search
-        </button>
+          <button
+            type="submit"
+            className="w-full sm:w-auto px-6 py-3 bg-brand-600 hover:bg-brand-700 text-white rounded-xl font-semibold text-sm transition mt-2 sm:mt-0"
+          >
+            Search
+          </button>
       </form>
 
       {/* Filter / Sort Control Strip */}
-      <div className="flex flex-wrap items-center justify-between gap-4 p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl mb-6">
-        <div className="flex flex-wrap items-center gap-4 text-xs font-medium text-slate-700 dark:text-slate-300">
+      <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl mb-6">
+        <div className="flex flex-wrap items-center gap-3 text-xs font-medium text-slate-700 dark:text-slate-300">
           <div className="flex items-center gap-2">
             <span>Sort by:</span>
             <select
@@ -117,7 +117,7 @@ export function SearchResults({ bookmarks, onToggleBookmark, isBookmarked }) {
               placeholder="e.g. 2023"
               value={year}
               onChange={(e) => { setYear(e.target.value); setPage(1); }}
-              className="w-24 bg-slate-100 dark:bg-slate-800 border-none rounded-lg px-2.5 py-1.5 outline-none"
+              className="w-24 sm:w-28 bg-slate-100 dark:bg-slate-800 border-none rounded-lg px-2.5 py-1.5 outline-none"
             />
           </div>
 
@@ -132,7 +132,7 @@ export function SearchResults({ bookmarks, onToggleBookmark, isBookmarked }) {
           </label>
         </div>
 
-        <div className="flex items-center gap-2 text-xs font-medium text-slate-700 dark:text-slate-300">
+        <div className="flex items-center gap-2 text-xs font-medium text-slate-700 dark:text-slate-300 mt-2 md:mt-0">
           <span>Results per page:</span>
           <select
             value={perPage}

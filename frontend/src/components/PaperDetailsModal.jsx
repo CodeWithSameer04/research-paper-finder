@@ -28,7 +28,7 @@ export function PaperDetailsModal({ paper, onClose, isBookmarked, onToggleBookma
           <button
             onClick={onClose}
             aria-label="Close modal"
-            className="p-2 rounded-lg text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
+            className="p-3 sm:p-2 rounded-lg text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
           >
             <X className="w-5 h-5" />
           </button>
@@ -101,10 +101,10 @@ export function PaperDetailsModal({ paper, onClose, isBookmarked, onToggleBookma
         </div>
 
         {/* Modal Footer */}
-        <div className="p-4 sm:p-6 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between bg-slate-50 dark:bg-slate-900/50">
+        <div className="p-4 sm:p-6 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-center sm:justify-between bg-slate-50 dark:bg-slate-900/50 gap-3">
           <button
             onClick={() => onToggleBookmark(paper)}
-            className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
+            className="flex items-center gap-2 px-4 py-3 sm:py-2 rounded-xl text-sm font-medium border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 transition touch-manipulation"
           >
             {isBookmarked ? (
               <>
@@ -119,13 +119,13 @@ export function PaperDetailsModal({ paper, onClose, isBookmarked, onToggleBookma
             )}
           </button>
 
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3">
             {paper.doi && (
               <a
                 href={paper.doi}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-4 py-2 rounded-xl text-sm font-medium border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
+                className="px-4 py-3 sm:py-2 rounded-xl text-sm font-medium border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition touch-manipulation"
               >
                 View DOI
               </a>

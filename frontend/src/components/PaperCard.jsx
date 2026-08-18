@@ -5,19 +5,19 @@ export function PaperCard({ paper, isBookmarked, onToggleBookmark, onSelectPaper
   const [showFullAbstract, setShowFullAbstract] = useState(false);
 
   return (
-    <div className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-6 transition hover:shadow-lg dark:hover:border-slate-700 flex flex-col justify-between">
+    <div className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-4 sm:p-6 transition hover:shadow-lg dark:hover:border-slate-700 flex flex-col justify-between">
       <div>
         <div className="flex items-start justify-between gap-4">
           <h3 
             onClick={() => onSelectPaper(paper)}
-            className="text-lg font-bold text-slate-900 dark:text-white hover:text-brand-600 dark:hover:text-brand-400 cursor-pointer transition"
+            className="text-lg font-bold text-slate-900 dark:text-white hover:text-brand-600 dark:hover:text-brand-400 cursor-pointer transition line-clamp-2 break-words"
           >
             {paper.title}
           </h3>
           <button
             onClick={() => onToggleBookmark(paper)}
             aria-label={isBookmarked ? 'Remove bookmark' : 'Bookmark paper'}
-            className="text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 p-1 transition flex-shrink-0"
+            className="text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 p-2 rounded-md transition flex-shrink-0 touch-manipulation"
           >
             {isBookmarked ? (
               <BookmarkCheck className="w-6 h-6 text-brand-600 dark:text-brand-400 fill-brand-100 dark:fill-brand-950" />
@@ -73,7 +73,7 @@ export function PaperCard({ paper, isBookmarked, onToggleBookmark, onSelectPaper
         </div>
       </div>
 
-      <div className="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center justify-between gap-3">
+      <div className="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <button
           onClick={() => onSelectPaper(paper)}
           className="text-xs font-semibold text-slate-700 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 flex items-center gap-1"
@@ -81,7 +81,7 @@ export function PaperCard({ paper, isBookmarked, onToggleBookmark, onSelectPaper
           <Sparkles className="w-3.5 h-3.5" /> Paper Details
         </button>
 
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
           {paper.doi && (
             <a
               href={paper.doi}

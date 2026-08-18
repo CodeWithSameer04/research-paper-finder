@@ -8,7 +8,7 @@ export function Navbar({ theme, toggleTheme, bookmarkCount }) {
   const location = useLocation();
 
   const navLinkClass = (path) =>
-    `flex items-center gap-1.5 text-sm font-medium transition-colors ${
+    `flex items-center gap-1.5 text-sm font-medium transition-colors px-2 py-2 rounded-md touch-manipulation ${
       location.pathname === path
         ? 'text-brand-600 dark:text-brand-400 font-semibold'
         : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
@@ -24,7 +24,7 @@ export function Navbar({ theme, toggleTheme, bookmarkCount }) {
           <span>ResearchFinder</span>
         </Link>
 
-        <nav className="flex items-center gap-6">
+        <nav className="flex items-center gap-6 overflow-x-auto no-scrollbar px-2 sm:px-0">
           <Link to="/" className={navLinkClass('/')}>
             Search
           </Link>
