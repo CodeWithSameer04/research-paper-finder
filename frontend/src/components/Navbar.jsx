@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Bookmark, Sun, Moon, Info } from 'lucide-react';
+import { Bookmark, Sun, Moon, Info, Search } from 'lucide-react';
 // Import your logo image from assets
 import logoImage from '../assets/logo.png';
 
@@ -21,16 +21,17 @@ export function Navbar({ theme, toggleTheme, bookmarkCount }) {
         {/* Brand Logo & Name */}
         <Link to="/" className="flex items-center gap-2.5 text-slate-900 dark:text-white font-bold text-lg">
           <img src={logoImage} alt="ResearchFinder Logo" className="w-8 h-8 object-contain rounded-lg" />
-          <span>ResearchFinder</span>
+          <span className="hidden sm:inline">ResearchFinder</span>
         </Link>
 
         <nav className="flex items-center gap-6 overflow-x-auto no-scrollbar px-2 sm:px-0">
           <Link to="/" className={navLinkClass('/')}>
-            Search
+            <Search className="w-5 h-5" />
+            <span className="hidden sm:inline">Search</span>
           </Link>
           <Link to="/saved" className={navLinkClass('/saved')}>
-            <Bookmark className="w-4 h-4" />
-            <span>Saved</span>
+            <Bookmark className="w-5 h-5" />
+            <span className="hidden sm:inline">Saved</span>
             {bookmarkCount > 0 && (
               <span className="ml-1 px-1.5 py-0.5 text-xs bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-300 rounded-full font-semibold">
                 {bookmarkCount}
@@ -38,8 +39,8 @@ export function Navbar({ theme, toggleTheme, bookmarkCount }) {
             )}
           </Link>
           <Link to="/about" className={navLinkClass('/about')}>
-            <Info className="w-4 h-4" />
-            <span>About</span>
+            <Info className="w-5 h-5" />
+            <span className="hidden sm:inline">About</span>
           </Link>
           <button
             onClick={toggleTheme}

@@ -42,13 +42,13 @@ export function Home() {
       {/* Main Search Input */}
       <form onSubmit={handleSearch} className="mt-10 max-w-3xl mx-auto">
         <div className="relative flex flex-col sm:flex-row items-stretch">
-          <Search className="absolute left-5 top-4 w-6 h-6 text-slate-400" />
+          <Search className="absolute left-4 top-3.5 w-5 h-5 text-slate-400" />
           <input
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search research topics, papers, authors, or keywords..."
-            className="w-full pl-14 pr-6 py-4 bg-white dark:bg-slate-900 text-slate-900 dark:text-white border-2 border-slate-200 dark:border-slate-800 rounded-2xl shadow-lg focus:border-brand-500 focus:ring-4 focus:ring-brand-500/10 outline-none text-base sm:text-lg transition"
+            className="w-full pl-12 pr-4 sm:pr-6 py-4 bg-white dark:bg-slate-900 text-slate-900 dark:text-white border-2 border-slate-200 dark:border-slate-800 rounded-2xl shadow-lg focus:border-brand-500 focus:ring-4 focus:ring-brand-500/10 outline-none text-base sm:text-lg transition"
           />
           <button
             type="submit"
