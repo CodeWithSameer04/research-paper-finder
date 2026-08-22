@@ -162,6 +162,15 @@ export function SearchResults({ bookmarks, onToggleBookmark, isBookmarked }) {
         </div>
       )}
 
+      {/* Query Normalization Notice */}
+      {!loading && !error && data.wasCorrected && data.suggestedTerm && (
+        <div className="mb-6 px-4 py-3 bg-brand-50/70 dark:bg-brand-950/40 border border-brand-200 dark:border-brand-900 rounded-xl text-xs text-brand-800 dark:text-brand-300 flex items-center justify-between">
+          <span>
+            Showing results for <strong className="font-semibold">{data.suggestedTerm}</strong> (normalized from <em>"{data.query}"</em>)
+          </span>
+        </div>
+      )}
+
       {/* Visual Analytics Dashboard */}
       {!loading && !error && data.results.length > 0 && (
         <DashboardCharts papers={data.results} totalCount={data.pagination.total} />
