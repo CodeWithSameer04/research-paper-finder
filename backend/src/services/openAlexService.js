@@ -11,39 +11,52 @@ export async function fetchPapersFromOpenAlex({
   year,
   openAccess = false
 }) {
+  // Dynamically assemble Axios query parameters for OpenAlex works endpoint
+  const params = {
+    search: query.trim(),
+    page: Number(page) || 1,
+    per_page: Number(perPage) || 10
+  };
+
+  // Map sort options to OpenAlex format
+  if (sort === 'date') {
+    params.sort = 'publication_date:desc';
+  } else if (sort === 'citations') {
+    params.sort = 'cited_by_count:desc';
+  } else if (sort && sort !== 'relevance') {
+    params.sort = sort;
+  }
+
+  // Construct filters array dynamically
   const filters = [];
 
-  if (query && query.trim()) {
-    filters.push(`default.search:${encodeURIComponent(query.trim())}`);
+  if (year && String(year).trim()) {
+    filters.push(`publication_year:${String(year).trim()}`);
   }
 
-  if (year && year.trim()) {
-    filters.push(`publication_year:${year.trim()}`);
-  }
-
-  if (openAccess) {
+  if (openAccess === true || openAccess === 'true') {
     filters.push('is_oa:true');
   }
 
-  let sortQuery = 'relevance_score:desc';
-  if (sort === 'date') {
-    sortQuery = 'publication_date:desc';
-  } else if (sort === 'citations') {
-    sortQuery = 'cited_by_count:desc';
+  if (filters.length > 0) {
+    params.filter = filters.join(',');
   }
 
-  const params = {
-    filter: filters.join(','),
-    page,
-    'per-page': perPage,
-    sort: sortQuery
+  // Configure User-Agent header (required by OpenAlex polite pool)
+  const contactEmail = process.env.APP_EMAIL || process.env.OPENALEX_EMAIL || 'your-email@example.com';
+  const userAgent = process.env.OPENALEX_USER_AGENT || `mailto:${contactEmail}`;
+
+  const headers = {
+    'User-Agent': userAgent
   };
+
+  if (process.env.OPENALEX_API_KEY) {
+    params.api_key = process.env.OPENALEX_API_KEY;
+  }
 
   const response = await axios.get(OPENALEX_WORKS_URL, {
     params,
-    headers: {
-      'User-Agent': `mailto:${process.env.APP_EMAIL || 'user@example.com'}`
-    },
+    headers,
     timeout: 10000
   });
 
